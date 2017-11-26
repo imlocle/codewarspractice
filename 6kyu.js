@@ -4,18 +4,15 @@
 // Examples: "Add 7 to 15." -> 22 "Subtract 7 from 15." -> 8 "What is the weather at 5:30pm?" -> "sunny"
 // According to the weather API, it is "sunny" from (including) 6am to 6pm (including), and "raining" the rest of the day.
 // // Disclaimer: Yes, those features may already exist in Siri.
-
 function message(msg){
     if (msg.match(/Add/)){
         var rx1 = /Add\s*(\w+)\s*to\s*(\w+)/g;
-        var rx2 = /Add\s*\w+\s*to\s*(\w+)/g;
         var digit = rx1.exec(msg);
         return parseInt(digit[1]) + parseInt(digit[2]);
     }
 
     if (msg.match(/Subtract/)){
         var rx1 = /Subtract\s*(\w+)\s*from\s*(\w+)/g;
-        var rx2 = /Subtract\s*\w+\s*from\s*(\w+)/g;
         var digit = rx1.exec(msg);
         return Math.abs(parseInt(digit[1]) - parseInt(digit[2]));
     }
