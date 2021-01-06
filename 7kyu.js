@@ -27,3 +27,36 @@ function printerError(string){
 
 printerError("aabbbeeee");
 printerError("aaklcklmnmiozzww");
+
+// https://www.codewars.com/kata/529eef7a9194e0cbc1000255
+// An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+// Note: anagrams are case insensitive
+// Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+var isAnagram = function(test, original) {
+    function createKeyValue(word){
+      let dict = {}
+      word.split('').forEach(x => {
+        dict[x] ? dict[x] += 1 : dict[x] = 1
+      })
+      return dict
+    }
+    
+    function compareObjects(object1, object2) {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+    
+      if (keys1.length !== keys2.length) {
+          return false
+      }
+    
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
+          return false
+        }
+      }
+      return true
+    }
+    let dict1 = createKeyValue(test.toLowerCase())
+    let dict2 = createKeyValue(original.toLowerCase())
+    return compareObjects(dict1, dict2)
+  };
